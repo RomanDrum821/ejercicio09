@@ -7,8 +7,26 @@ import { RouterOutlet } from '@angular/router';
   standalone: true,
   imports: [CommonModule, RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent {
-  title = 'CBDF_HIRV_Ejercicio09';
+  title = 'Ejercicio 09 - Interpolacion';
+  nombre = 'Jose Antonio Vargas Lopez';
+  edad = '20';
+  semestre = 'Quinto semestre';
+  calificaciones = [8, 7, 15, 10, 8, 9, 8, 6];
+  promedio = this.calcularpromedio();
+  estado = this.estadoAlumno();
+
+  calcularpromedio() {
+    let suma = 0;
+    const longuitudArreglo = this.calificaciones.length;
+    for (let i = 0; i < longuitudArreglo; i++) suma += this.calificaciones[i];
+    return suma / longuitudArreglo;
+  }
+
+  estadoAlumno() {
+    if (this.calcularpromedio() >= 6) return 'Aprobado';
+    else return 'No aprobado';
+  }
 }
